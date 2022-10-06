@@ -10,7 +10,7 @@ public class SwingCounter extends JFrame implements ActionListener{
 
 	JLabel lb = new JLabel("카운터값");
 	JTextField tf = new JTextField("0",5);
-	
+	//변경
 	JButton btnInc = new JButton("증가");
 	JButton btnDec = new JButton("감소");
 	JButton btnCls = new JButton("초기화");

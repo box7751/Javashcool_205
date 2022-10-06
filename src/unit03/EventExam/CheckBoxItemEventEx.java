@@ -18,6 +18,7 @@ public class CheckBoxItemEventEx extends JFrame implements ItemListener{
 		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout());
 		add(p);
+		//º¯°æ
 		
 		p.add(lb);
 		p.add(fruit1);
