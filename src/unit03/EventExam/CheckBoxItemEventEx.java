@@ -9,10 +9,11 @@ import javax.swing.*;
 public class CheckBoxItemEventEx extends JFrame implements ItemListener{
 	int sum=0;
 	JLabel lb = new JLabel("사과100원,배500원,체리2000원");
-	JCheckBox fruit1 = new JCheckBox("사과");
-	JCheckBox fruit2 = new JCheckBox("배");
-	JCheckBox fruit3 = new JCheckBox("체리");
 	JLabel lb_reult = new JLabel("현재 "+sum +"원 입니다.");
+	
+	JCheckBox [] fruit = new JCheckBox[3];
+	String[] names = {"사과", "배", "체리"};
+
 
 	CheckBoxItemEventEx(){
 		JPanel p = new JPanel();
@@ -21,14 +22,15 @@ public class CheckBoxItemEventEx extends JFrame implements ItemListener{
 		//변경
 		
 		p.add(lb);
-		p.add(fruit1);
-		p.add(fruit2);
-		p.add(fruit3);
+		
+		for(int i=0; i<fruit.length; i++) {
+			fruit[i] = new JCheckBox(names[i]);
+			p.add(fruit[i]);
+			fruit[i].addItemListener(null);
+		}
+		
 		p.add(lb_reult);
 		
-		fruit1.addItemListener(this);
-		fruit2.addItemListener(this);
-		fruit3.addItemListener(this);
 		
 		setTitle("체크박스 이벤트 예제");
 		setSize(250,200);
@@ -43,23 +45,23 @@ public class CheckBoxItemEventEx extends JFrame implements ItemListener{
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if(e.getStateChange() == ItemEvent.SELECTED) {
-			if(e.getItem() == fruit1) { 
+			if(e.getItem() == fruit[0]) { 
 				sum+=100;
 			}
-			else if (e.getItem() == fruit2) {
+			else if (e.getItem() == fruit[1]) {
 				sum+=500;
 			}
-			else if (e.getItem() == fruit3) {
+			else if (e.getItem() == fruit[2]) {
 				sum+=2000;
 			}
 		}else if(e.getStateChange()==ItemEvent.DESELECTED) {
-			if(e.getItem() == fruit1) {
+			if(e.getItem() == fruit[0]) {
 				sum-=100;
 			}
-			else if (e.getItem() == fruit2) {
+			else if (e.getItem() == fruit[1]) {
 				sum-=500;
 			}
-			else if (e.getItem() == fruit3) {
+			else if (e.getItem() == fruit[2]) {
 				sum-=2000;
 			}
 		}
